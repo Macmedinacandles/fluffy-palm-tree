@@ -41,6 +41,15 @@ If you'd like to make a profile README, use the quickstart instructions below or
 4. If you created a new branch for your file, open and merge a pull request on your branch.
 5. Lastly, we'd love to hear what you thought of this course [in our discussion board](https://github.com/orgs/skills/discussions/categories/introduction-to-github).
 
+### Where to find GitHub CLI
+
+GitHub CLI (`gh`) is a command-line tool that brings GitHub to your terminal. It allows you to work with pull requests, issues, repositories, and other GitHub features from the command line.
+
+**To get GitHub CLI:**
+- **Download:** Visit [cli.github.com](https://cli.github.com) to download and install GitHub CLI for your operating system (Windows, macOS, or Linux)
+- **Documentation:** Check out the [GitHub CLI manual](https://cli.github.com/manual/) for installation instructions and usage guides
+- **Quick start:** After installation, authenticate with `gh auth login` and start using commands like `gh repo clone`, `gh pr create`, and more!
+
 Check out these resources to learn more or get involved:
 
 - Are you a student? Check out the [Student Developer Pack](https://education.github.com/pack).
