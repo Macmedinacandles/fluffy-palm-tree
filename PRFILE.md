@@ -22,37 +22,42 @@ Use `puppeteer-core` when you want to manage the browser installation yourself o
 
 Here's a basic example of using Puppeteer to automate browser interactions:
 
+> **Note:** This example uses top-level await (Node.js 14.8+). For older versions, wrap the code in an async function.
+
 ```javascript
 import puppeteer from 'puppeteer';
 // Or import puppeteer from 'puppeteer-core';
 
 // Launch the browser and open a new blank page.
 const browser = await puppeteer.launch();
-const page = await browser.newPage();
 
-// Navigate the page to a URL.
-await page.goto('https://developer.chrome.com/');
+try {
+  const page = await browser.newPage();
 
-// Set screen size.
-await page.setViewport({width: 1080, height: 1024});
+  // Navigate the page to a URL.
+  await page.goto('https://developer.chrome.com/');
 
-// Open the search menu using the keyboard.
-await page.keyboard.press('/');
+  // Set screen size.
+  await page.setViewport({width: 1080, height: 1024});
 
-// Type into search box using accessible input name.
-await page.locator('::-p-aria(Search)').fill('automate beyond recorder');
+  // Open the search menu using the keyboard.
+  await page.keyboard.press('/');
 
-// Wait and click on first result.
-await page.locator('.devsite-result-item-link').click();
+  // Type into search box using accessible input name.
+  await page.locator('::-p-aria(Search)').fill('automate beyond recorder');
 
-// Locate the full title with a unique string.
-const textSelector = await page
-  .locator('::-p-text(Customize and automate)')
-  .waitHandle();
-const fullTitle = await textSelector?.evaluate(el => el.textContent);
+  // Wait and click on first result.
+  await page.locator('.devsite-result-item-link').click();
 
-// Print the full title.
-console.log('The title of this blog post is "%s".', fullTitle);
+  // Locate the full title with a unique string.
+  const textSelector = await page
+    .locator('::-p-text(Customize and automate)')
+    .waitHandle();
+  const fullTitle = await textSelector?.evaluate(el => el.textContent);
 
-await browser.close();
+  // Print the full title.
+  console.log('The title of this blog post is "%s".', fullTitle);
+} finally {
+  await browser.close();
+}
 ```
